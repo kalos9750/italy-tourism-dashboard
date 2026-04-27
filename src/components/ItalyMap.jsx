@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { MapContainer, GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import regionsData from '../data/regions2024.json'
@@ -40,45 +40,59 @@ function styleFeature(feature) {
   }
 }
 
-function onEachFeature(feature, layer) {
-  const name = normalizeName(feature.properties.reg_name)
-  const region = dataByRegion[name]
-  if (!region) return
+// clickRef lets the handler always call the latest onRegionClick without
+// remounting the GeoJSON layer when the prop reference changes.
+function makeOnEachFeature(clickRef) {
+  return function onEachFeature(feature, layer) {
+    const name = normalizeName(feature.properties.reg_name)
+    const region = dataByRegion[name]
+    if (!region) return
 
-  const pctIt = ((region.residenti / region.totale) * 100).toFixed(1)
-  const pctStr = ((region.stranieri / region.totale) * 100).toFixed(1)
-  const varSign = region.var2324 >= 0 ? '+' : ''
-  const varClass = region.var2324 >= 0 ? 'pos' : 'neg'
+    const pctIt = ((region.residenti / region.totale) * 100).toFixed(1)
+    const pctStr = ((region.stranieri / region.totale) * 100).toFixed(1)
+    const varSign = region.var2324 >= 0 ? '+' : ''
+    const varClass = region.var2324 >= 0 ? 'pos' : 'neg'
 
-  layer.bindTooltip(
-    `<div class="map-tooltip">
-      <div class="tt-title">${region.regione}</div>
-      <div class="tt-row"><span>Presenze totali</span><span>${numFmt.format(region.totale)}</span></div>
-      <div class="tt-row"><span>Italiani</span><span>${pctIt}%</span></div>
-      <div class="tt-row"><span>Stranieri</span><span>${pctStr}%</span></div>
-      <div class="tt-row tt-var ${varClass}"><span>Var. 2023–24</span><span>${varSign}${region.var2324}%</span></div>
-    </div>`,
-    { className: 'tooltip-dark', sticky: true, opacity: 1 }
-  )
+    layer.bindTooltip(
+      `<div class="map-tooltip">
+        <div class="tt-title">${region.regione}</div>
+        <div class="tt-row"><span>Presenze totali</span><span>${numFmt.format(region.totale)}</span></div>
+        <div class="tt-row"><span>Italiani</span><span>${pctIt}%</span></div>
+        <div class="tt-row"><span>Stranieri</span><span>${pctStr}%</span></div>
+        <div class="tt-row tt-var ${varClass}"><span>Var. 2023–24</span><span>${varSign}${region.var2324}%</span></div>
+      </div>`,
+      { className: 'tooltip-dark', sticky: true, opacity: 1 }
+    )
 
-  layer.on({
-    mouseover(e) {
-      e.target.setStyle({ fillOpacity: 1, weight: 2.5, color: '#93c5fd' })
-      e.target.bringToFront()
-    },
-    mouseout(e) {
-      e.target.setStyle({
-        fillOpacity: 0.85,
-        weight: 1.5,
-        color: '#ffffff',
-        fillColor: getColor(region.totale),
-      })
-    },
-  })
+    layer.on({
+      mouseover(e) {
+        e.target.setStyle({ fillOpacity: 1, weight: 2.5, color: '#93c5fd' })
+        e.target.bringToFront()
+      },
+      mouseout(e) {
+        e.target.setStyle({
+          fillOpacity: 0.85,
+          weight: 1.5,
+          color: '#ffffff',
+          fillColor: getColor(region.totale),
+        })
+      },
+      click() {
+        clickRef.current?.(region)
+      },
+    })
+  }
 }
 
-export default function ItalyMap() {
+export default function ItalyMap({ onRegionClick }) {
   const [geoJson, setGeoJson] = useState(null)
+  const clickRef = useRef(onRegionClick)
+
+  useEffect(() => {
+    clickRef.current = onRegionClick
+  }, [onRegionClick])
+
+  const onEachFeature = useCallback(makeOnEachFeature(clickRef), [])
 
   useEffect(() => {
     fetch(GEOJSON_URL)
