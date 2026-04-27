@@ -163,13 +163,50 @@
   overflow: hidden;
 }
 
+.chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-shrink: 0;
+}
+
 .chart-title {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 13px;
   font-weight: 600;
   color: #1e293b;
   letter-spacing: -0.1px;
-  flex-shrink: 0;
+}
+
+/* ── Filter toggle buttons ─────────────────────────────── */
+
+.filter-group {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 20px;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-btn:hover:not(.active) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.filter-btn.active {
+  background: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
 }
 
 .chart-canvas-wrapper {
