@@ -1,122 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
+import ItalyMap from './components/ItalyMap'
+import regionsData from './data/regions2024.json'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const COLORS = ['#dbeafe', '#93c5fd', '#3b82f6', '#1d4ed8', '#1e3a8a']
+const LEGEND_LABELS = ['< 1,3 M', '1,3 – 3,5 M', '3,5 – 10 M', '10 – 27 M', '> 27 M']
 
+const totalPresenze = regionsData.reduce((s, r) => s + r.totale, 0)
+const totalStranieri = regionsData.reduce((s, r) => s + r.stranieri, 0)
+const quotaStranieri = ((totalStranieri / totalPresenze) * 100).toFixed(1)
+const topRegione = regionsData.reduce((best, r) => (r.totale > best.totale ? r : best))
+
+const numFmt = new Intl.NumberFormat('it-IT', { notation: 'compact', maximumFractionDigits: 0 })
+
+export default function App() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="dashboard">
+      <aside className="sidebar">
+        <div className="sidebar-header">
+          <div className="sidebar-logo">IT</div>
+          <div>
+            <h1>Turismo in Italia</h1>
+            <p className="sidebar-subtitle">Presenze turistiche · ISTAT 2024</p>
+          </div>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+        <section className="sidebar-section">
+          <h2 className="section-label">Legenda — presenze totali</h2>
+          <div className="legend">
+            {COLORS.map((color, i) => (
+              <div key={i} className="legend-item">
+                <span className="legend-swatch" style={{ background: color }} />
+                <span>{LEGEND_LABELS[i]}</span>
+              </div>
+            ))}
+          </div>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="sidebar-section">
+          <h2 className="section-label">Statistiche nazionali</h2>
+          <div className="stat-list">
+            <div className="stat">
+              <span className="stat-label">Presenze totali</span>
+              <span className="stat-value">{numFmt.format(totalPresenze)}</span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Quota stranieri</span>
+              <span className="stat-value">{quotaStranieri}%</span>
+            </div>
+            <div className="stat">
+              <span className="stat-label">Prima regione</span>
+              <span className="stat-value">{topRegione.regione}</span>
+            </div>
+          </div>
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <section className="sidebar-section sidebar-hint">
+          <p>Passa il cursore su una regione per i dettagli.</p>
+        </section>
+      </aside>
+
+      <main className="main-content">
+        <ItalyMap />
+      </main>
+    </div>
   )
 }
-
-export default App
