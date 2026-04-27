@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import ItalyMap from './components/ItalyMap'
 import RegionDetail from './components/RegionDetail'
+import SeasonChart from './components/SeasonChart'
 import regionsData from './data/regions2024.json'
 import './App.css'
 
@@ -73,7 +74,16 @@ export default function App() {
       </aside>
 
       <main className="main-content">
-        <ItalyMap onRegionClick={handleRegionClick} />
+        <div className="map-section">
+          <ItalyMap onRegionClick={handleRegionClick} />
+        </div>
+
+        <section className="chart-section">
+          <h2 className="chart-title">Stagionalità turistica — Arrivi mensili</h2>
+          <div className="chart-canvas-wrapper">
+            <SeasonChart />
+          </div>
+        </section>
       </main>
     </div>
   )
