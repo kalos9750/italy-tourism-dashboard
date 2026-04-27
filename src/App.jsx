@@ -1,4 +1,6 @@
+import { useCallback, useState } from 'react'
 import ItalyMap from './components/ItalyMap'
+import RegionDetail from './components/RegionDetail'
 import regionsData from './data/regions2024.json'
 import './App.css'
 
@@ -13,6 +15,11 @@ const topRegione = regionsData.reduce((best, r) => (r.totale > best.totale ? r :
 const numFmt = new Intl.NumberFormat('it-IT', { notation: 'compact', maximumFractionDigits: 0 })
 
 export default function App() {
+  const [selectedRegion, setSelectedRegion] = useState(null)
+
+  const handleRegionClick = useCallback(region => setSelectedRegion(region), [])
+  const handleBack = useCallback(() => setSelectedRegion(null), [])
+
   return (
     <div className="dashboard">
       <aside className="sidebar">
@@ -36,31 +43,37 @@ export default function App() {
           </div>
         </section>
 
-        <section className="sidebar-section">
-          <h2 className="section-label">Statistiche nazionali</h2>
-          <div className="stat-list">
-            <div className="stat">
-              <span className="stat-label">Presenze totali</span>
-              <span className="stat-value">{numFmt.format(totalPresenze)}</span>
-            </div>
-            <div className="stat">
-              <span className="stat-label">Quota stranieri</span>
-              <span className="stat-value">{quotaStranieri}%</span>
-            </div>
-            <div className="stat">
-              <span className="stat-label">Prima regione</span>
-              <span className="stat-value">{topRegione.regione}</span>
-            </div>
-          </div>
-        </section>
+        {selectedRegion ? (
+          <RegionDetail region={selectedRegion} onBack={handleBack} />
+        ) : (
+          <>
+            <section className="sidebar-section">
+              <h2 className="section-label">Statistiche nazionali</h2>
+              <div className="stat-list">
+                <div className="stat">
+                  <span className="stat-label">Presenze totali</span>
+                  <span className="stat-value">{numFmt.format(totalPresenze)}</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-label">Quota stranieri</span>
+                  <span className="stat-value">{quotaStranieri}%</span>
+                </div>
+                <div className="stat">
+                  <span className="stat-label">Prima regione</span>
+                  <span className="stat-value">{topRegione.regione}</span>
+                </div>
+              </div>
+            </section>
 
-        <section className="sidebar-section sidebar-hint">
-          <p>Passa il cursore su una regione per i dettagli.</p>
-        </section>
+            <section className="sidebar-section sidebar-hint">
+              <p>Clicca su una regione per i dettagli.</p>
+            </section>
+          </>
+        )}
       </aside>
 
       <main className="main-content">
-        <ItalyMap />
+        <ItalyMap onRegionClick={handleRegionClick} />
       </main>
     </div>
   )

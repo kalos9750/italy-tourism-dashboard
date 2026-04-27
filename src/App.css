@@ -201,3 +201,143 @@
 .tt-var.neg span:last-child {
   color: #f87171;
 }
+
+/* ── RegionDetail ───────────────────────────────────────── */
+
+.region-detail {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.back-btn {
+  all: unset;
+  cursor: pointer;
+  font-size: 11px;
+  color: #475569;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+  transition: color 0.15s;
+}
+
+.back-btn:hover {
+  color: #94a3b8;
+}
+
+.rd-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--sidebar-heading);
+  letter-spacing: -0.4px;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.rd-totale {
+  font-size: 32px;
+  font-weight: 700;
+  color: #60a5fa;
+  letter-spacing: -1px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.rd-quota {
+  font-size: 11px;
+  color: #475569;
+  margin-bottom: 20px;
+}
+
+/* Split bar */
+
+.rd-bar-block {
+  margin-bottom: 20px;
+}
+
+.rd-bar-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.rd-bar-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.lbl-it {
+  color: #60a5fa;
+}
+
+.lbl-str {
+  color: #fb923c;
+}
+
+.rd-bar {
+  display: flex;
+  height: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.rd-bar-it {
+  background: #3b82f6;
+  transition: width 0.4s ease;
+}
+
+.rd-bar-str {
+  background: #f97316;
+  flex: 1;
+  transition: width 0.4s ease;
+}
+
+.rd-bar-pcts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--sidebar-text);
+}
+
+/* Variation */
+
+.rd-var {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--sidebar-surface);
+}
+
+.rd-var-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.rd-var-value {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.rd-var-label {
+  font-size: 11px;
+  color: #475569;
+  margin-left: 2px;
+}
+
+.rd-var.pos .rd-var-arrow,
+.rd-var.pos .rd-var-value {
+  color: #4ade80;
+}
+
+.rd-var.neg .rd-var-arrow,
+.rd-var.neg .rd-var-value {
+  color: #f87171;
+}
