@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import ItalyMap from './components/ItalyMap'
 import RegionDetail from './components/RegionDetail'
 import SeasonChart from './components/SeasonChart'
+import TopCities from './components/TopCities'
 import regionsData from './data/regions2024.json'
 import './App.css'
 
@@ -72,6 +73,8 @@ export default function App() {
             </section>
           </>
         )}
+
+        <TopCities />
       </aside>
 
       <main className="main-content">
