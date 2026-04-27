@@ -17,6 +17,7 @@ const numFmt = new Intl.NumberFormat('it-IT', { notation: 'compact', maximumFrac
 
 export default function App() {
   const [selectedRegion, setSelectedRegion] = useState(null)
+  const [chartFilter, setChartFilter] = useState('totale')
 
   const handleRegionClick = useCallback(region => setSelectedRegion(region), [])
   const handleBack = useCallback(() => setSelectedRegion(null), [])
@@ -79,9 +80,26 @@ export default function App() {
         </div>
 
         <section className="chart-section">
-          <h2 className="chart-title">Stagionalità turistica — Arrivi mensili</h2>
+          <div className="chart-header">
+            <h2 className="chart-title">Stagionalità turistica — Arrivi mensili</h2>
+            <div className="filter-group">
+              {[
+                { value: 'totale',    label: 'Tutti' },
+                { value: 'italiani',  label: 'Italiani' },
+                { value: 'stranieri', label: 'Stranieri' },
+              ].map(({ value, label }) => (
+                <button
+                  key={value}
+                  className={`filter-btn${chartFilter === value ? ' active' : ''}`}
+                  onClick={() => setChartFilter(value)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="chart-canvas-wrapper">
-            <SeasonChart />
+            <SeasonChart filter={chartFilter} />
           </div>
         </section>
       </main>
