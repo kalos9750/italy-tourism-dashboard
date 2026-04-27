@@ -209,6 +209,10 @@
   border-color: #3b82f6;
 }
 
+.cmp-toggle {
+  margin-left: 8px;
+}
+
 .chart-canvas-wrapper {
   flex: 1;
   min-height: 0;
@@ -480,4 +484,166 @@
 
 .tc-pct {
   color: #64748b;
+}
+
+/* ── Compare section ────────────────────────────────────── */
+
+.compare-section {
+  flex-shrink: 0;
+  background: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  padding: 14px 24px 12px;
+  overflow: hidden;
+}
+
+.rc-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Selects row */
+
+.rc-selects {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rc-select {
+  flex: 1;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #1e293b;
+  cursor: pointer;
+  outline: none;
+  min-width: 0;
+}
+
+.rc-select:focus {
+  border-color: #3b82f6;
+}
+
+.rc-vs {
+  font-size: 11px;
+  font-weight: 700;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+/* Stats grid */
+
+.rc-grid {
+  display: flex;
+  gap: 0;
+}
+
+.rc-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.rc-col-name {
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rc-col-a .rc-col-name { color: #2563eb; }
+.rc-col-b .rc-col-name { color: #ea580c; }
+
+.rc-stat {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #64748b;
+  padding: 1px 0;
+}
+
+.rc-stat strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.rc-stat.pos strong { color: #16a34a; }
+.rc-stat.neg strong { color: #dc2626; }
+
+.rc-divider {
+  width: 1px;
+  background: #e2e8f0;
+  margin: 0 14px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* CSS bar chart */
+
+.rc-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rc-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rc-bar-label {
+  width: 84px;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: #475569;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rc-bar-track {
+  flex: 1;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rc-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.rc-fill-a { background: #3b82f6; }
+.rc-fill-b { background: #f97316; }
+
+.rc-bar-value {
+  width: 54px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 10px;
+  color: #475569;
+}
+
+/* Winner */
+
+.rc-winner {
+  font-size: 12px;
+  color: #475569;
+  padding-top: 6px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.rc-winner strong {
+  color: #1e293b;
 }
