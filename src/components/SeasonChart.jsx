@@ -20,20 +20,29 @@ const YEARS = [
   { key: '2013', color: '#f97316', fill: 'rgba(249,115,22,0.08)' },
 ]
 
-const data = {
-  labels,
-  datasets: YEARS.map(({ key, color, fill }) => ({
-    label: key,
-    data: monthlyData.map(m => m[key].totale),
-    borderColor: color,
-    backgroundColor: fill,
-    pointBackgroundColor: color,
-    pointRadius: 3,
-    pointHoverRadius: 5,
-    borderWidth: 2,
-    tension: 0.35,
-    fill: false,
-  })),
+function getValue(monthEntry, yearKey, filter) {
+  const y = monthEntry[yearKey]
+  if (filter === 'italiani') return y.italianiAlb + y.italianiExtra
+  if (filter === 'stranieri') return y.stranieriAlb + y.stranieriExtra
+  return y.totale
+}
+
+function buildData(filter) {
+  return {
+    labels,
+    datasets: YEARS.map(({ key, color, fill }) => ({
+      label: key,
+      data: monthlyData.map(m => getValue(m, key, filter)),
+      borderColor: color,
+      backgroundColor: fill,
+      pointBackgroundColor: color,
+      pointRadius: 3,
+      pointHoverRadius: 5,
+      borderWidth: 2,
+      tension: 0.35,
+      fill: false,
+    })),
+  }
 }
 
 const numFmt = new Intl.NumberFormat('it-IT')
@@ -91,6 +100,6 @@ const options = {
   },
 }
 
-export default function SeasonChart() {
-  return <Line data={data} options={options} />
+export default function SeasonChart({ filter = 'totale' }) {
+  return <Line data={buildData(filter)} options={options} />
 }
