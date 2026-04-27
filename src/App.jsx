@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import ItalyMap from './components/ItalyMap'
 import RegionDetail from './components/RegionDetail'
+import RegionCompare from './components/RegionCompare'
 import SeasonChart from './components/SeasonChart'
 import TopCities from './components/TopCities'
 import regionsData from './data/regions2024.json'
@@ -19,6 +20,7 @@ const numFmt = new Intl.NumberFormat('it-IT', { notation: 'compact', maximumFrac
 export default function App() {
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [chartFilter, setChartFilter] = useState('totale')
+  const [showCompare, setShowCompare] = useState(false)
 
   const handleRegionClick = useCallback(region => setSelectedRegion(region), [])
   const handleBack = useCallback(() => setSelectedRegion(null), [])
@@ -100,11 +102,23 @@ export default function App() {
                 </button>
               ))}
             </div>
+            <button
+              className={`filter-btn cmp-toggle${showCompare ? ' active' : ''}`}
+              onClick={() => setShowCompare(v => !v)}
+            >
+              {showCompare ? 'Chiudi confronto' : 'Confronta regioni'}
+            </button>
           </div>
           <div className="chart-canvas-wrapper">
             <SeasonChart filter={chartFilter} />
           </div>
         </section>
+
+        {showCompare && (
+          <section className="compare-section">
+            <RegionCompare />
+          </section>
+        )}
       </main>
     </div>
   )
