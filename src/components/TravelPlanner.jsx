@@ -185,6 +185,55 @@ export default function TravelPlanner() {
           Cerca hotel
         </button>
       </form>
+
+      {loading && (
+        <div className="tp-spinner-wrap">
+          <div className="tp-spinner" />
+          <span className="tp-spinner-label">Ricerca hotel in corso…</span>
+        </div>
+      )}
+
+      {error && (
+        <p className="tp-error">⚠ {error}</p>
+      )}
+
+      {!loading && hotels !== null && (
+        <div className="tp-results">
+          {affollamento && (
+            <div className="tp-affollamento" style={{ color: affollamento.color }}>
+              {affollamento.label}
+            </div>
+          )}
+          {hotels.length === 0 ? (
+            <p className="tp-empty">Nessun hotel trovato per questo budget. Prova un range diverso.</p>
+          ) : (
+            <div className="tp-hotel-list">
+              {hotels.map((h, i) => {
+                const prop  = h.property ?? {}
+                const price = prop.priceBreakdown?.grossPrice?.value
+                const stars = Math.min(5, Math.max(0, Math.round(prop.propertyClass ?? 0)))
+                const score = prop.reviewScore
+                return (
+                  <div key={prop.id ?? i} className="tp-hotel-card">
+                    <span className="tp-hotel-name">{prop.name ?? '—'}</span>
+                    <div className="tp-hotel-meta">
+                      {stars > 0 && (
+                        <span className="tp-hotel-stars">{'★'.repeat(stars)}</span>
+                      )}
+                      {score != null && (
+                        <span className="tp-hotel-score">{score.toFixed(1)}</span>
+                      )}
+                      {price != null && (
+                        <span className="tp-hotel-price">{Math.round(price)} €/notte</span>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }
