@@ -34,6 +34,22 @@ const BUDGET_OPTS = [
 
 const RAPIDAPI_HOST = 'booking-com15.p.rapidapi.com'
 
+const YEARS = ['2011', '2012', '2013']
+
+function getAffollamento(checkInDate) {
+  const monthNum = new Date(checkInDate).getMonth() + 1
+  const monthlyAvgs = monthlyData.map(m => {
+    const avg = YEARS.reduce((s, y) => s + m[y].totale, 0) / YEARS.length
+    return { meseNum: m.meseNum, avg }
+  })
+  const annualAvg = monthlyAvgs.reduce((s, m) => s + m.avg, 0) / 12
+  const { avg: monthAvg } = monthlyAvgs.find(m => m.meseNum === monthNum)
+  const ratio = monthAvg / annualAvg
+  if (ratio > 1.30) return { label: '🔴 Alta stagione',  color: '#dc2626' }
+  if (ratio < 0.70) return { label: '🟢 Bassa stagione', color: '#16a34a' }
+  return                   { label: '🟡 Media stagione', color: '#ca8a04' }
+}
+
 async function fetchDestId(city) {
   const res = await fetch(
     `https://${RAPIDAPI_HOST}/api/v1/hotels/searchDestination?query=${encodeURIComponent(city)}`,
@@ -93,6 +109,7 @@ export default function TravelPlanner() {
         })
         .slice(0, 5)
       setHotels(filtered)
+      setAffollamento(getAffollamento(checkIn))
     } catch (err) {
       setError(err.message || 'Errore durante la ricerca. Riprova.')
     } finally {
