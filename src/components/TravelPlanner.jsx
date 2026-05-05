@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import regionsData from '../data/regions2024.json'
+import monthlyData from '../data/monthly.json'
 
 const CITY_MAP = {
   'Veneto': 'Venezia',
@@ -31,20 +32,80 @@ const BUDGET_OPTS = [
   { label: '€200+',    min: 200, max: Infinity },
 ]
 
+const RAPIDAPI_HOST = 'booking-com15.p.rapidapi.com'
+
+async function fetchDestId(city) {
+  const res = await fetch(
+    `https://${RAPIDAPI_HOST}/api/v1/hotels/searchDestination?query=${encodeURIComponent(city)}`,
+    {
+      headers: {
+        'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
+        'x-rapidapi-host': RAPIDAPI_HOST,
+      },
+    }
+  )
+  const json = await res.json()
+  const dest_id = json.data?.[0]?.dest_id
+  if (!dest_id) throw new Error('Destinazione non trovata')
+  return dest_id
+}
+
+async function fetchHotels(dest_id, checkIn, checkOut) {
+  const res = await fetch(
+    `https://${RAPIDAPI_HOST}/api/v1/hotels/searchHotels?dest_id=${dest_id}&search_type=CITY&arrival_date=${checkIn}&departure_date=${checkOut}&adults=2&room_qty=1&units=metric&currency_code=EUR`,
+    {
+      headers: {
+        'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
+        'x-rapidapi-host': RAPIDAPI_HOST,
+      },
+    }
+  )
+  const json = await res.json()
+  return json.data?.hotels ?? []
+}
+
 export default function TravelPlanner() {
   const [region, setRegion]   = useState('')
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [budget, setBudget]   = useState(BUDGET_OPTS[1])
+  const [loading, setLoading] = useState(false)
+  const [error, setError]     = useState(null)
+  const [hotels, setHotels]   = useState(null)
+  const [affollamento, setAffollamento] = useState(null)
 
   const regions = regionsData.map(r => r.regione).sort()
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+    setHotels(null)
+    setAffollamento(null)
+    try {
+      const city = CITY_MAP[region]
+      const dest_id = await fetchDestId(city)
+      const all = await fetchHotels(dest_id, checkIn, checkOut)
+      const filtered = all
+        .filter(h => {
+          const price = h.property?.priceBreakdown?.grossPrice?.value ?? 0
+          return price >= budget.min && (budget.max === Infinity || price <= budget.max)
+        })
+        .slice(0, 5)
+      setHotels(filtered)
+    } catch (err) {
+      setError(err.message || 'Errore durante la ricerca. Riprova.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <div className="tp-container">
       <div className="tp-header">
         <h2 className="tp-title">Pianifica il tuo viaggio in Italia</h2>
       </div>
-      <form className="tp-form" onSubmit={e => e.preventDefault()}>
+      <form className="tp-form" onSubmit={handleSubmit}>
         <div className="tp-field">
           <label className="tp-label">Regione</label>
           <select
@@ -102,7 +163,7 @@ export default function TravelPlanner() {
         <button
           type="submit"
           className="tp-submit"
-          disabled={!region || !checkIn || !checkOut}
+          disabled={!region || !checkIn || !checkOut || loading}
         >
           Cerca hotel
         </button>
