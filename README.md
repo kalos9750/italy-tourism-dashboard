@@ -1,7 +1,6 @@
 # Italy Tourism Dashboard
 
-Dashboard interattiva per l'analisi del turismo italiano, costruita con React + Vite. Visualizza dati ISTAT sulle presenze turistiche per regione, stagionalità mensile e classifica delle principali città.
-
+Interactive dashboard for analyzing Italian tourism, built with React + Vite. View ISTAT data on tourist presence by region, monthly seasonality, and ranking of major cities.
 ## Getting Started
 
 ```bash
@@ -11,28 +10,27 @@ npm install
 npm run dev
 ```
 
-L'applicazione sarà disponibile su `http://localhost:5173`.
+The application will be available on `http://localhost:5173`.
 
 ## Features
 
 ### US-01 — Mappa choropleth interattiva
-Mappa dell'Italia colorata in scala di blu in base alle presenze turistiche totali per regione (dati 2024). Tooltip al passaggio del cursore con presenze totali, quota italiani/stranieri e variazione 2023-24.
+Map of Italy colored in blue based on total tourist presences by region (2024 data). Hover tooltip showing total presences, Italian/foreigner ratio, and 2023-24 variation.
 
-### US-02 — Pannello dettaglio regione
-Click su una regione apre nel sidebar un pannello dedicato con: presenze totali formattate in Mln, quota sul totale nazionale, barra visiva italiani/stranieri, variazione percentuale 2023-24 con indicatore verde/rosso.
+### US-02 — Region detail panel
+Clicking on a region opens a dedicated panel in the sidebar with: total presences formatted in millions, share of the national total, visual bar Italians/foreigners, percentage change 2023-24 with green/red indicator.
 
 ### US-03 — Grafico stagionalità mensile
-Grafico a linee (Chart.js) con andamento mensile degli arrivi per gli anni 2011, 2012 e 2013. Asse X con nomi dei mesi in italiano, tooltip contestuale.
+Line chart (Chart.js) with monthly arrival trends for the years 2011, 2012 and 2013. X-axis with month names in Italian, contextual tooltip.
 
-### US-04 — Filtro italiani / stranieri
-Tre pulsanti toggle sopra il grafico — **Tutti**, **Italiani**, **Stranieri** — per filtrare le serie visualizzate in tempo reale.
+### US-04 — Italian/Foreign Filter
+Three toggle buttons above the chart — **All**, **Italians**, **Foreigners** — to filter the series displayed in real time.
 
-### US-05 — Classifica top 15 città
-Pannello nel sidebar sempre visibile con la graduatoria delle 15 città italiane per presenze. Ogni riga mostra rank, nome, barra proporzionale CSS, valore in Mln e quota percentuale nazionale.
+### US-05 — Top 15 Cities Ranking
+Always visible sidebar panel with the ranking of the 15 Italian cities by attendance. Each row displays rank, name, CSS proportional bar, value in millions, and national percentage share.
 
-### US-06 — Confronto side-by-side tra regioni
-Pannello attivabile con il pulsante **Confronta regioni** sotto il grafico di stagionalità. Permette di scegliere due regioni tramite dropdown e ne affianca le statistiche principali (presenze, % italiani/stranieri, var%) con un grafico a barre CSS proporzionali e un'etichetta del vincitore.
-
+### US-06 — Side-by-side comparison between regions
+This panel can be activated by clicking the **Compare regions** button below the seasonality graph. It allows you to select two regions via a dropdown menu and displays their key statistics (visits, % Italian/foreign, % change) alongside a proportional CSS bar chart and a winner label.
 ## Tech Stack
 
 | Libreria | Versione | Utilizzo |
@@ -46,12 +44,11 @@ Pannello attivabile con il pulsante **Confronta regioni** sotto il grafico di st
 
 ## Dataset
 
-I dati utilizzati provengono dall'**ISTAT** (Istituto Nazionale di Statistica), rilasciati con licenza **CC BY 3.0 IT**.
+The data used comes from **ISTAT** (National Institute of Statistics), released under the **CC BY 3.0 IT** license.
 
-- Fonte: [istat.it](https://www.istat.it)
-- Dati di riferimento: presenze negli esercizi ricettivi, anno 2024
-- Dati di stagionalità: arrivi mensili negli esercizi alberghieri ed extra-alberghieri, anni 2011-2013
-
+- Source: [istat.it](https://www.istat.it)
+- Reference data: number of guests in accommodation establishments, year 2024
+- Seasonality data: monthly arrivals in hotels and other accommodation establishments, years 2011-2013
 ## Project Structure
 
 ```
