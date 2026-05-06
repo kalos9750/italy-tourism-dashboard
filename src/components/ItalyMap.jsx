@@ -1,7 +1,31 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { MapContainer, GeoJSON } from 'react-leaflet'
+import { MapContainer, GeoJSON, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import regionsData from '../data/regions2024.json'
+import citiesData from '../data/citiesData.json'
+
+const DEFAULT_CENTER = [41.8719, 12.5674]
+const DEFAULT_ZOOM = 6
+const REGION_ZOOM = 8
+
+const citiesByRegion = Object.fromEntries(citiesData.map(r => [r.regione, r.cities]))
+
+function MapController({ selectedRegion }) {
+  const map = useMap()
+  useEffect(() => {
+    if (selectedRegion) {
+      const cities = citiesByRegion[selectedRegion.regione]
+      if (cities && cities.length > 0) {
+        const lat = cities.reduce((s, c) => s + c.lat, 0) / cities.length
+        const lng = cities.reduce((s, c) => s + c.lng, 0) / cities.length
+        map.flyTo([lat, lng], REGION_ZOOM)
+      }
+    } else {
+      map.flyTo(DEFAULT_CENTER, DEFAULT_ZOOM)
+    }
+  }, [selectedRegion, map])
+  return null
+}
 
 const GEOJSON_URL =
   'https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson'
@@ -84,7 +108,7 @@ function makeOnEachFeature(clickRef) {
   }
 }
 
-export default function ItalyMap({ onRegionClick }) {
+export default function ItalyMap({ onRegionClick, selectedRegion }) {
   const [geoJson, setGeoJson] = useState(null)
   const clickRef = useRef(onRegionClick)
 
@@ -103,12 +127,13 @@ export default function ItalyMap({ onRegionClick }) {
 
   return (
     <MapContainer
-      center={[42.2, 12.5]}
-      zoom={6}
+      center={DEFAULT_CENTER}
+      zoom={DEFAULT_ZOOM}
       zoomControl
       scrollWheelZoom
       style={{ height: '100%', width: '100%', background: '#f1f5f9' }}
     >
+      <MapController selectedRegion={selectedRegion} />
       {geoJson && (
         <GeoJSON
           key="italy-regions"
