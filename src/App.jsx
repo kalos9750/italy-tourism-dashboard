@@ -4,6 +4,7 @@ import RegionDetail from './components/RegionDetail'
 import RegionCompare from './components/RegionCompare'
 import SeasonChart from './components/SeasonChart'
 import TopCities from './components/TopCities'
+import TravelPlanner from './components/TravelPlanner'
 import regionsData from './data/regions2024.json'
 import './App.css'
 
@@ -21,6 +22,7 @@ export default function App() {
   const [selectedRegion, setSelectedRegion] = useState(null)
   const [chartFilter, setChartFilter] = useState('totale')
   const [showCompare, setShowCompare] = useState(false)
+  const [showPlanner, setShowPlanner] = useState(false)
 
   const handleRegionClick = useCallback(region => setSelectedRegion(region), [])
   const handleBack = useCallback(() => setSelectedRegion(null), [])
@@ -108,6 +110,12 @@ export default function App() {
             >
               {showCompare ? 'Chiudi confronto' : 'Confronta regioni'}
             </button>
+            <button
+              className={`filter-btn cmp-toggle${showPlanner ? ' active' : ''}`}
+              onClick={() => setShowPlanner(v => !v)}
+            >
+              {showPlanner ? 'Chiudi pianificatore' : '🧭 Pianifica il tuo viaggio'}
+            </button>
           </div>
           <div className="chart-canvas-wrapper">
             <SeasonChart filter={chartFilter} />
@@ -117,6 +125,12 @@ export default function App() {
         {showCompare && (
           <section className="compare-section">
             <RegionCompare />
+          </section>
+        )}
+
+        {showPlanner && (
+          <section className="planner-section">
+            <TravelPlanner />
           </section>
         )}
       </main>
