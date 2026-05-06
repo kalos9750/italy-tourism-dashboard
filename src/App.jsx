@@ -83,7 +83,7 @@ export default function App() {
 
       <main className="main-content">
         <div className="map-section">
-          <ItalyMap onRegionClick={handleRegionClick} />
+          <ItalyMap onRegionClick={handleRegionClick} selectedRegion={selectedRegion} />
         </div>
 
         <section className="chart-section">
