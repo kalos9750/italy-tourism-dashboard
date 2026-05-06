@@ -866,3 +866,110 @@
   color: #dc2626;
   padding: 0 24px 16px;
 }
+
+/* ── City markers (US-10) ──────────────────────────────── */
+
+.city-marker-icon {
+  background: transparent;
+  border: none;
+}
+
+.city-marker-dot {
+  width: 18px;
+  height: 18px;
+  background: #3b82f6;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.45);
+  transition: transform 0.15s;
+}
+
+.city-marker-dot:hover {
+  transform: scale(1.15);
+  background: #1d4ed8;
+}
+
+/* Popup overrides */
+
+.city-popup .leaflet-popup-content-wrapper {
+  background: #0f172a;
+  color: #94a3b8;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 0;
+}
+
+.city-popup .leaflet-popup-content {
+  margin: 0;
+  padding: 12px 14px;
+  min-width: 200px;
+  font-family: inherit;
+}
+
+.city-popup .leaflet-popup-tip {
+  background: #0f172a;
+  border: 1px solid #334155;
+}
+
+.city-popup .leaflet-popup-close-button {
+  color: #64748b;
+  padding: 6px 8px 0 0;
+}
+
+.city-popup .leaflet-popup-close-button:hover {
+  color: #f1f5f9;
+}
+
+.cm-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f1f5f9;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #1e293b;
+}
+
+.cm-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 12px;
+  padding: 3px 0;
+  color: #64748b;
+}
+
+.cm-row strong {
+  color: #e2e8f0;
+  font-weight: 600;
+}
+
+.cm-bar-block {
+  margin-top: 10px;
+}
+
+.cm-bar {
+  display: flex;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #1e293b;
+}
+
+.cm-bar-it {
+  background: #3b82f6;
+  transition: width 0.4s ease;
+}
+
+.cm-bar-str {
+  background: #f97316;
+  flex: 1;
+}
+
+.cm-bar-pcts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 600;
+}
