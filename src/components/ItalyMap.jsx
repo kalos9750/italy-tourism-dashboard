@@ -1,8 +1,23 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { MapContainer, GeoJSON, useMap } from 'react-leaflet'
+import { MapContainer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet'
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import regionsData from '../data/regions2024.json'
 import citiesData from '../data/citiesData.json'
+
+const cityIcon = L.divIcon({
+  className: 'city-marker-icon',
+  html: '<div class="city-marker-dot"></div>',
+  iconSize: [18, 18],
+  iconAnchor: [9, 9],
+  popupAnchor: [0, -10],
+})
+
+const formatMln = n =>
+  (n / 1_000_000).toLocaleString('it-IT', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }) + ' Mln'
 
 const DEFAULT_CENTER = [41.8719, 12.5674]
 const DEFAULT_ZOOM = 6
@@ -142,6 +157,39 @@ export default function ItalyMap({ onRegionClick, selectedRegion }) {
           onEachFeature={onEachFeature}
         />
       )}
+      {selectedRegion &&
+        (citiesByRegion[selectedRegion.regione] ?? []).map(city => (
+          <Marker
+            key={city.name}
+            position={[city.lat, city.lng]}
+            icon={cityIcon}
+          >
+            <Popup className="city-popup">
+              <div className="cm-title">{city.name}</div>
+              <div className="cm-row">
+                <span>Presenze</span>
+                <strong>{formatMln(city.presenze)}</strong>
+              </div>
+              <div className="cm-row">
+                <span>Mese più affollato</span>
+                <strong>{city.mese_top}</strong>
+              </div>
+              <div className="cm-bar-block">
+                <div className="cm-bar">
+                  <div
+                    className="cm-bar-it"
+                    style={{ width: `${city.pct_italiani}%` }}
+                  />
+                  <div className="cm-bar-str" />
+                </div>
+                <div className="cm-bar-pcts">
+                  <span className="lbl-it">{city.pct_italiani}% IT</span>
+                  <span className="lbl-str">{city.pct_stranieri}% STR</span>
+                </div>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
     </MapContainer>
   )
 }
