@@ -1,0 +1,142 @@
+[
+  {
+    "regione": "Veneto",
+    "cities": [
+      { "name": "Venezia", "lat": 45.4408, "lng": 12.3155, "presenze": 13290973, "pct_italiani": 28, "pct_stranieri": 72, "mese_top": "Aprile" },
+      { "name": "Verona", "lat": 45.4384, "lng": 10.9916, "presenze": 3103472, "pct_italiani": 34, "pct_stranieri": 66, "mese_top": "Giugno" }
+    ]
+  },
+  {
+    "regione": "Lazio",
+    "cities": [
+      { "name": "Roma", "lat": 41.9028, "lng": 12.4964, "presenze": 42705319, "pct_italiani": 41, "pct_stranieri": 59, "mese_top": "Aprile" },
+      { "name": "Viterbo", "lat": 42.4169, "lng": 12.1044, "presenze": 850000, "pct_italiani": 70, "pct_stranieri": 30, "mese_top": "Maggio" }
+    ]
+  },
+  {
+    "regione": "Toscana",
+    "cities": [
+      { "name": "Firenze", "lat": 43.7696, "lng": 11.2558, "presenze": 9192960, "pct_italiani": 36, "pct_stranieri": 64, "mese_top": "Maggio" },
+      { "name": "Pisa", "lat": 43.7228, "lng": 10.4017, "presenze": 1861048, "pct_italiani": 48, "pct_stranieri": 52, "mese_top": "Giugno" }
+    ]
+  },
+  {
+    "regione": "Lombardia",
+    "cities": [
+      { "name": "Milano", "lat": 45.4654, "lng": 9.1859, "presenze": 14054184, "pct_italiani": 42, "pct_stranieri": 58, "mese_top": "Aprile" },
+      { "name": "Como", "lat": 45.8080, "lng": 9.0851, "presenze": 1100000, "pct_italiani": 38, "pct_stranieri": 62, "mese_top": "Luglio" }
+    ]
+  },
+  {
+    "regione": "Campania",
+    "cities": [
+      { "name": "Napoli", "lat": 40.8518, "lng": 14.2681, "presenze": 3862329, "pct_italiani": 48, "pct_stranieri": 52, "mese_top": "Aprile" },
+      { "name": "Sorrento", "lat": 40.6263, "lng": 14.3757, "presenze": 2847463, "pct_italiani": 18, "pct_stranieri": 82, "mese_top": "Luglio" }
+    ]
+  },
+  {
+    "regione": "Sicilia",
+    "cities": [
+      { "name": "Palermo", "lat": 38.1157, "lng": 13.3615, "presenze": 1964765, "pct_italiani": 55, "pct_stranieri": 45, "mese_top": "Giugno" },
+      { "name": "Taormina", "lat": 37.8523, "lng": 15.2891, "presenze": 1200000, "pct_italiani": 35, "pct_stranieri": 65, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Sardegna",
+    "cities": [
+      { "name": "Cagliari", "lat": 39.2238, "lng": 9.1217, "presenze": 950000, "pct_italiani": 62, "pct_stranieri": 38, "mese_top": "Agosto" },
+      { "name": "Olbia", "lat": 40.9231, "lng": 9.4992, "presenze": 880000, "pct_italiani": 58, "pct_stranieri": 42, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Piemonte",
+    "cities": [
+      { "name": "Torino", "lat": 45.0703, "lng": 7.6869, "presenze": 3580221, "pct_italiani": 52, "pct_stranieri": 48, "mese_top": "Ottobre" },
+      { "name": "Cuneo", "lat": 44.3841, "lng": 7.5426, "presenze": 420000, "pct_italiani": 78, "pct_stranieri": 22, "mese_top": "Luglio" }
+    ]
+  },
+  {
+    "regione": "Emilia-Romagna",
+    "cities": [
+      { "name": "Bologna", "lat": 44.4949, "lng": 11.3426, "presenze": 4146877, "pct_italiani": 48, "pct_stranieri": 52, "mese_top": "Marzo" },
+      { "name": "Rimini", "lat": 44.0678, "lng": 12.5695, "presenze": 6938992, "pct_italiani": 67, "pct_stranieri": 33, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Liguria",
+    "cities": [
+      { "name": "Genova", "lat": 44.4056, "lng": 8.9463, "presenze": 2297499, "pct_italiani": 62, "pct_stranieri": 38, "mese_top": "Luglio" },
+      { "name": "Sanremo", "lat": 43.8159, "lng": 7.7761, "presenze": 780000, "pct_italiani": 70, "pct_stranieri": 30, "mese_top": "Febbraio" }
+    ]
+  },
+  {
+    "regione": "Puglia",
+    "cities": [
+      { "name": "Bari", "lat": 41.1171, "lng": 16.8719, "presenze": 1372257, "pct_italiani": 58, "pct_stranieri": 42, "mese_top": "Luglio" },
+      { "name": "Lecce", "lat": 40.3516, "lng": 18.1750, "presenze": 950000, "pct_italiani": 65, "pct_stranieri": 35, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Calabria",
+    "cities": [
+      { "name": "Reggio Calabria", "lat": 38.1113, "lng": 15.6475, "presenze": 420000, "pct_italiani": 75, "pct_stranieri": 25, "mese_top": "Agosto" },
+      { "name": "Tropea", "lat": 38.6759, "lng": 15.8977, "presenze": 380000, "pct_italiani": 80, "pct_stranieri": 20, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Abruzzo",
+    "cities": [
+      { "name": "L'Aquila", "lat": 42.3498, "lng": 13.3995, "presenze": 320000, "pct_italiani": 82, "pct_stranieri": 18, "mese_top": "Agosto" },
+      { "name": "Pescara", "lat": 42.4618, "lng": 14.2160, "presenze": 480000, "pct_italiani": 78, "pct_stranieri": 22, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Marche",
+    "cities": [
+      { "name": "Ancona", "lat": 43.6158, "lng": 13.5189, "presenze": 580000, "pct_italiani": 72, "pct_stranieri": 28, "mese_top": "Luglio" },
+      { "name": "Pesaro", "lat": 43.9099, "lng": 12.9136, "presenze": 520000, "pct_italiani": 75, "pct_stranieri": 25, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Umbria",
+    "cities": [
+      { "name": "Perugia", "lat": 43.1107, "lng": 12.3908, "presenze": 980000, "pct_italiani": 58, "pct_stranieri": 42, "mese_top": "Maggio" },
+      { "name": "Assisi", "lat": 43.0707, "lng": 12.6164, "presenze": 1402071, "pct_italiani": 68, "pct_stranieri": 32, "mese_top": "Maggio" }
+    ]
+  },
+  {
+    "regione": "Trentino-Alto Adige",
+    "cities": [
+      { "name": "Trento", "lat": 46.0748, "lng": 11.1217, "presenze": 1200000, "pct_italiani": 55, "pct_stranieri": 45, "mese_top": "Dicembre" },
+      { "name": "Bolzano", "lat": 46.4983, "lng": 11.3548, "presenze": 1800000, "pct_italiani": 38, "pct_stranieri": 62, "mese_top": "Dicembre" }
+    ]
+  },
+  {
+    "regione": "Friuli-Venezia Giulia",
+    "cities": [
+      { "name": "Trieste", "lat": 45.6495, "lng": 13.7768, "presenze": 1391122, "pct_italiani": 52, "pct_stranieri": 48, "mese_top": "Luglio" },
+      { "name": "Udine", "lat": 46.0633, "lng": 13.2354, "presenze": 480000, "pct_italiani": 68, "pct_stranieri": 32, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Valle d'Aosta",
+    "cities": [
+      { "name": "Aosta", "lat": 45.7369, "lng": 7.3200, "presenze": 620000, "pct_italiani": 72, "pct_stranieri": 28, "mese_top": "Agosto" },
+      { "name": "Courmayeur", "lat": 45.7968, "lng": 6.9693, "presenze": 480000, "pct_italiani": 65, "pct_stranieri": 35, "mese_top": "Agosto" }
+    ]
+  },
+  {
+    "regione": "Basilicata",
+    "cities": [
+      { "name": "Matera", "lat": 40.6664, "lng": 16.6043, "presenze": 680000, "pct_italiani": 68, "pct_stranieri": 32, "mese_top": "Maggio" },
+      { "name": "Potenza", "lat": 40.6420, "lng": 15.7990, "presenze": 180000, "pct_italiani": 85, "pct_stranieri": 15, "mese_top": "Luglio" }
+    ]
+  },
+  {
+    "regione": "Molise",
+    "cities": [
+      { "name": "Campobasso", "lat": 41.5603, "lng": 14.6588, "presenze": 95000, "pct_italiani": 88, "pct_stranieri": 12, "mese_top": "Agosto" },
+      { "name": "Termoli", "lat": 41.9929, "lng": 14.9993, "presenze": 120000, "pct_italiani": 85, "pct_stranieri": 15, "mese_top": "Agosto" }
+    ]
+  }
+]

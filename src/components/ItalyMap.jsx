@@ -1,7 +1,46 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { MapContainer, GeoJSON } from 'react-leaflet'
+import { MapContainer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet'
+import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import regionsData from '../data/regions2024.json'
+import citiesData from '../data/citiesData.json'
+
+const cityIcon = L.divIcon({
+  className: 'city-marker-icon',
+  html: '<div class="city-marker-dot"></div>',
+  iconSize: [18, 18],
+  iconAnchor: [9, 9],
+  popupAnchor: [0, -10],
+})
+
+const formatMln = n =>
+  (n / 1_000_000).toLocaleString('it-IT', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }) + ' Mln'
+
+const DEFAULT_CENTER = [41.8719, 12.5674]
+const DEFAULT_ZOOM = 6
+const REGION_ZOOM = 8
+
+const citiesByRegion = Object.fromEntries(citiesData.map(r => [r.regione, r.cities]))
+
+function MapController({ selectedRegion }) {
+  const map = useMap()
+  useEffect(() => {
+    if (selectedRegion) {
+      const cities = citiesByRegion[selectedRegion.regione]
+      if (cities && cities.length > 0) {
+        const lat = cities.reduce((s, c) => s + c.lat, 0) / cities.length
+        const lng = cities.reduce((s, c) => s + c.lng, 0) / cities.length
+        map.flyTo([lat, lng], REGION_ZOOM)
+      }
+    } else {
+      map.flyTo(DEFAULT_CENTER, DEFAULT_ZOOM)
+    }
+  }, [selectedRegion, map])
+  return null
+}
 
 const GEOJSON_URL =
   'https://raw.githubusercontent.com/openpolis/geojson-italy/master/geojson/limits_IT_regions.geojson'
@@ -84,7 +123,7 @@ function makeOnEachFeature(clickRef) {
   }
 }
 
-export default function ItalyMap({ onRegionClick }) {
+export default function ItalyMap({ onRegionClick, selectedRegion }) {
   const [geoJson, setGeoJson] = useState(null)
   const clickRef = useRef(onRegionClick)
 
@@ -103,12 +142,13 @@ export default function ItalyMap({ onRegionClick }) {
 
   return (
     <MapContainer
-      center={[42.2, 12.5]}
-      zoom={6}
+      center={DEFAULT_CENTER}
+      zoom={DEFAULT_ZOOM}
       zoomControl
       scrollWheelZoom
       style={{ height: '100%', width: '100%', background: '#f1f5f9' }}
     >
+      <MapController selectedRegion={selectedRegion} />
       {geoJson && (
         <GeoJSON
           key="italy-regions"
@@ -117,6 +157,39 @@ export default function ItalyMap({ onRegionClick }) {
           onEachFeature={onEachFeature}
         />
       )}
+      {selectedRegion &&
+        (citiesByRegion[selectedRegion.regione] ?? []).map(city => (
+          <Marker
+            key={city.name}
+            position={[city.lat, city.lng]}
+            icon={cityIcon}
+          >
+            <Popup className="city-popup">
+              <div className="cm-title">{city.name}</div>
+              <div className="cm-row">
+                <span>Presenze</span>
+                <strong>{formatMln(city.presenze)}</strong>
+              </div>
+              <div className="cm-row">
+                <span>Mese più affollato</span>
+                <strong>{city.mese_top}</strong>
+              </div>
+              <div className="cm-bar-block">
+                <div className="cm-bar">
+                  <div
+                    className="cm-bar-it"
+                    style={{ width: `${city.pct_italiani}%` }}
+                  />
+                  <div className="cm-bar-str" />
+                </div>
+                <div className="cm-bar-pcts">
+                  <span className="lbl-it">{city.pct_italiani}% IT</span>
+                  <span className="lbl-str">{city.pct_stranieri}% STR</span>
+                </div>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
     </MapContainer>
   )
 }
