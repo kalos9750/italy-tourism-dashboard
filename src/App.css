@@ -1006,3 +1006,23 @@
   font-size: 11px;
   font-weight: 600;
 }
+
+.cm-hotel-btn {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  padding: 7px 12px;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cm-hotel-btn:hover {
+  background: #2563eb;
+}
