@@ -86,7 +86,7 @@ export default function App() {
           <ItalyMap onRegionClick={handleRegionClick} selectedRegion={selectedRegion} />
         </div>
 
-        <section className="chart-section">
+        <section className={`chart-section${selectedRegion ? ' hidden' : ''}`}>
           <div className="chart-header">
             <h2 className="chart-title">Stagionalità turistica — Arrivi mensili</h2>
             <div className="filter-group">
