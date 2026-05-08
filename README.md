@@ -1,6 +1,7 @@
 # Italy Tourism Dashboard
 
 Interactive dashboard for analyzing Italian tourism, built with React + Vite. View ISTAT data on tourist presence by region, monthly seasonality, and ranking of major cities.
+
 ## Getting Started
 
 ```bash
@@ -14,27 +15,30 @@ The application will be available on `http://localhost:5173`.
 
 ## Features
 
-### US-01 — Mappa choropleth interattiva
-Map of Italy colored in blue based on total tourist presences by region (2024 data). Hover tooltip showing total presences, Italian/foreigner ratio, and 2023-24 variation.
+- 🗺️ **US-01** — Interactive choropleth map of Italy showing tourist presences by region (ISTAT 2024 data)
+- 📍 **US-02** — Region detail panel on click (total presences, Italian vs foreign split, YoY variation 2023-24)
+- 📊 **US-03** — Monthly seasonality line chart of tourist arrivals (2011-2013)
+- 🔍 **US-04** — Filter toggle on the monthly chart: All / Italians / Foreigners
+- 🏆 **US-05** — Top 15 Italian cities ranked by tourist presences
+- ⚖️ **US-06** — Side-by-side comparison between two regions
+- 🧭 **US-07** — Travel Planner with real hotel prices from Booking.com API (via RapidAPI)
+- 🔎 **US-10** — Region zoom with markers for the top 2 cities and their tourism data popups
+- 🏨 **US-10b** — "Find hotels here" button in city popup that opens the Travel Planner pre-filled with the selected region
 
-### US-02 — Region detail panel
-Clicking on a region opens a dedicated panel in the sidebar with: total presences formatted in millions, share of the national total, visual bar Italians/foreigners, percentage change 2023-24 with green/red indicator.
+## Environment Variables
 
-### US-03 — Grafico stagionalità mensile
-Line chart (Chart.js) with monthly arrival trends for the years 2011, 2012 and 2013. X-axis with month names in Italian, contextual tooltip.
+Create a `.env.local` file in the root directory:
 
-### US-04 — Italian/Foreign Filter
-Three toggle buttons above the chart — **All**, **Italians**, **Foreigners** — to filter the series displayed in real time.
+```
+VITE_RAPIDAPI_KEY=your_rapidapi_key_here
+```
 
-### US-05 — Top 15 Cities Ranking
-Always visible sidebar panel with the ranking of the 15 Italian cities by attendance. Each row displays rank, name, CSS proportional bar, value in millions, and national percentage share.
+Get your free API key at [RapidAPI — Booking COM](https://rapidapi.com/DataCrawler/api/booking-com15)
 
-### US-06 — Side-by-side comparison between regions
-This panel can be activated by clicking the **Compare regions** button below the seasonality graph. It allows you to select two regions via a dropdown menu and displays their key statistics (visits, % Italian/foreign, % change) alongside a proportional CSS bar chart and a winner label.
 ## Tech Stack
 
 | Libreria | Versione | Utilizzo |
-|---|---|---|
+|----------|----------|----------|
 | React | 19 | UI |
 | Vite | 8 | Build tool |
 | react-leaflet | 5 | Mappa interattiva |
@@ -44,11 +48,13 @@ This panel can be activated by clicking the **Compare regions** button below the
 
 ## Dataset
 
-The data used comes from **ISTAT** (National Institute of Statistics), released under the **CC BY 3.0 IT** license.
+The data used comes from ISTAT (National Institute of Statistics), released under the CC BY 3.0 IT license.
 
-- Source: [istat.it](https://www.istat.it)
+- Source: istat.it
 - Reference data: number of guests in accommodation establishments, year 2024
 - Seasonality data: monthly arrivals in hotels and other accommodation establishments, years 2011-2013
+- citiesData.json — Top 2 cities per region with coordinates and tourism data
+
 ## Project Structure
 
 ```
