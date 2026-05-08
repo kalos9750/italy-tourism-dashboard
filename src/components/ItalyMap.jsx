@@ -123,7 +123,7 @@ function makeOnEachFeature(clickRef) {
   }
 }
 
-export default function ItalyMap({ onRegionClick, selectedRegion }) {
+export default function ItalyMap({ onRegionClick, selectedRegion, onCityHotelSearch }) {
   const [geoJson, setGeoJson] = useState(null)
   const clickRef = useRef(onRegionClick)
 
@@ -187,6 +187,13 @@ export default function ItalyMap({ onRegionClick, selectedRegion }) {
                   <span className="lbl-str">{city.pct_stranieri}% STR</span>
                 </div>
               </div>
+              <button
+                type="button"
+                className="cm-hotel-btn"
+                onClick={() => onCityHotelSearch?.(selectedRegion.regione)}
+              >
+                🏨 Cerca hotel qui
+              </button>
             </Popup>
           </Marker>
         ))}

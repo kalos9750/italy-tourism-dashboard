@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 import ItalyMap from './components/ItalyMap'
 import RegionDetail from './components/RegionDetail'
 import RegionCompare from './components/RegionCompare'
@@ -23,9 +23,18 @@ export default function App() {
   const [chartFilter, setChartFilter] = useState('totale')
   const [showCompare, setShowCompare] = useState(false)
   const [showPlanner, setShowPlanner] = useState(false)
+  const [plannerRegion, setPlannerRegion] = useState('')
+  const plannerRef = useRef(null)
 
   const handleRegionClick = useCallback(region => setSelectedRegion(region), [])
   const handleBack = useCallback(() => setSelectedRegion(null), [])
+  const handleCityHotelSearch = useCallback(regioneName => {
+    setShowPlanner(true)
+    setPlannerRegion(regioneName)
+    requestAnimationFrame(() => {
+      plannerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    })
+  }, [])
 
   return (
     <div className="dashboard">
@@ -83,10 +92,19 @@ export default function App() {
 
       <main className="main-content">
         <div className="map-section">
-          <ItalyMap onRegionClick={handleRegionClick} selectedRegion={selectedRegion} />
+          <ItalyMap
+            onRegionClick={handleRegionClick}
+            selectedRegion={selectedRegion}
+            onCityHotelSearch={handleCityHotelSearch}
+          />
+          {selectedRegion && (
+            <button className="map-back-btn" onClick={() => setSelectedRegion(null)}>
+              ← Torna alla mappa
+            </button>
+          )}
         </div>
 
-        <section className="chart-section">
+        <section className={`chart-section${selectedRegion ? ' hidden' : ''}`}>
           <div className="chart-header">
             <h2 className="chart-title">Stagionalità turistica — Arrivi mensili</h2>
             <div className="filter-group">
@@ -129,8 +147,8 @@ export default function App() {
         )}
 
         {showPlanner && (
-          <section className="planner-section">
-            <TravelPlanner />
+          <section className="planner-section" ref={plannerRef}>
+            <TravelPlanner defaultRegion={plannerRegion} />
           </section>
         )}
       </main>

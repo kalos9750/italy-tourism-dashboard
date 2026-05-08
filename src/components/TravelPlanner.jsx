@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import regionsData from '../data/regions2024.json'
 import monthlyData from '../data/monthly.json'
 
@@ -80,8 +80,8 @@ async function fetchHotels(dest_id, checkIn, checkOut) {
   return json.data?.hotels ?? []
 }
 
-export default function TravelPlanner() {
-  const [region, setRegion]   = useState('')
+export default function TravelPlanner({ defaultRegion = '' }) {
+  const [region, setRegion]   = useState(defaultRegion)
   const [checkIn, setCheckIn] = useState('')
   const [checkOut, setCheckOut] = useState('')
   const [budget, setBudget]   = useState(BUDGET_OPTS[1])
@@ -91,6 +91,10 @@ export default function TravelPlanner() {
   const [affollamento, setAffollamento] = useState(null)
 
   const regions = regionsData.map(r => r.regione).sort()
+
+  useEffect(() => {
+    if (defaultRegion) setRegion(defaultRegion)
+  }, [defaultRegion])
 
   async function handleSubmit(e) {
     e.preventDefault()
