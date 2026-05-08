@@ -84,6 +84,11 @@ export default function App() {
       <main className="main-content">
         <div className="map-section">
           <ItalyMap onRegionClick={handleRegionClick} selectedRegion={selectedRegion} />
+          {selectedRegion && (
+            <button className="map-back-btn" onClick={() => setSelectedRegion(null)}>
+              ← Torna alla mappa
+            </button>
+          )}
         </div>
 
         <section className={`chart-section${selectedRegion ? ' hidden' : ''}`}>

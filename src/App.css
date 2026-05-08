@@ -150,6 +150,27 @@
   overflow: hidden;
 }
 
+.map-back-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1000;
+  background: #1e3a8a;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: background 0.15s;
+}
+
+.map-back-btn:hover {
+  background: #1d4ed8;
+}
+
 /* ── Chart section ─────────────────────────────────────── */
 
 .chart-section {
