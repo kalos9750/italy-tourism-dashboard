@@ -1,0 +1,74 @@
+[
+  {
+    "mese": "Gennaio", "meseNum": 1,
+    "2011": { "italianiAlb": 21947, "stranieriAlb": 8773, "italianiExtra": 5742, "stranieriExtra": 1003, "totale": 37465 },
+    "2012": { "italianiAlb": 23971, "stranieriAlb": 10361, "italianiExtra": 6083, "stranieriExtra": 1131, "totale": 41546 },
+    "2013": { "italianiAlb": 20082, "stranieriAlb": 12760, "italianiExtra": 5123, "stranieriExtra": 1071, "totale": 39036 }
+  },
+  {
+    "mese": "Febbraio", "meseNum": 2,
+    "2011": { "italianiAlb": 21959, "stranieriAlb": 9124, "italianiExtra": 5017, "stranieriExtra": 1372, "totale": 37472 },
+    "2012": { "italianiAlb": 21466, "stranieriAlb": 10961, "italianiExtra": 5137, "stranieriExtra": 1385, "totale": 38949 },
+    "2013": { "italianiAlb": 19468, "stranieriAlb": 10046, "italianiExtra": 4912, "stranieriExtra": 1456, "totale": 35882 }
+  },
+  {
+    "mese": "Marzo", "meseNum": 3,
+    "2011": { "italianiAlb": 26517, "stranieriAlb": 14386, "italianiExtra": 6667, "stranieriExtra": 2182, "totale": 49752 },
+    "2012": { "italianiAlb": 29409, "stranieriAlb": 16089, "italianiExtra": 7381, "stranieriExtra": 3221, "totale": 56100 },
+    "2013": { "italianiAlb": 24375, "stranieriAlb": 16440, "italianiExtra": 8063, "stranieriExtra": 4250, "totale": 53128 }
+  },
+  {
+    "mese": "Aprile", "meseNum": 4,
+    "2011": { "italianiAlb": 27761, "stranieriAlb": 32939, "italianiExtra": 11862, "stranieriExtra": 11293, "totale": 83855 },
+    "2012": { "italianiAlb": 28564, "stranieriAlb": 32748, "italianiExtra": 13523, "stranieriExtra": 10537, "totale": 85372 },
+    "2013": { "italianiAlb": 24818, "stranieriAlb": 26044, "italianiExtra": 10137, "stranieriExtra": 9320, "totale": 70319 }
+  },
+  {
+    "mese": "Maggio", "meseNum": 5,
+    "2011": { "italianiAlb": 29502, "stranieriAlb": 38579, "italianiExtra": 11514, "stranieriExtra": 13231, "totale": 92826 },
+    "2012": { "italianiAlb": 27512, "stranieriAlb": 41587, "italianiExtra": 9878, "stranieriExtra": 16879, "totale": 95856 },
+    "2013": { "italianiAlb": 23982, "stranieriAlb": 42527, "italianiExtra": 9251, "stranieriExtra": 20264, "totale": 96024 }
+  },
+  {
+    "mese": "Giugno", "meseNum": 6,
+    "2011": { "italianiAlb": 30685, "stranieriAlb": 47362, "italianiExtra": 16911, "stranieriExtra": 22333, "totale": 117291 },
+    "2012": { "italianiAlb": 28181, "stranieriAlb": 42814, "italianiExtra": 15705, "stranieriExtra": 22080, "totale": 108780 },
+    "2013": { "italianiAlb": 27692, "stranieriAlb": 45368, "italianiExtra": 14436, "stranieriExtra": 24770, "totale": 112266 }
+  },
+  {
+    "mese": "Luglio", "meseNum": 7,
+    "2011": { "italianiAlb": 30475, "stranieriAlb": 60270, "italianiExtra": 18601, "stranieriExtra": 40668, "totale": 150014 },
+    "2012": { "italianiAlb": 26381, "stranieriAlb": 58186, "italianiExtra": 14954, "stranieriExtra": 41766, "totale": 141287 },
+    "2013": { "italianiAlb": 27591, "stranieriAlb": 58773, "italianiExtra": 14348, "stranieriExtra": 45942, "totale": 146654 }
+  },
+  {
+    "mese": "Agosto", "meseNum": 8,
+    "2011": { "italianiAlb": 30596, "stranieriAlb": 53983, "italianiExtra": 21431, "stranieriExtra": 37797, "totale": 143807 },
+    "2012": { "italianiAlb": 26752, "stranieriAlb": 54483, "italianiExtra": 20659, "stranieriExtra": 37146, "totale": 139040 },
+    "2013": { "italianiAlb": 28168, "stranieriAlb": 53115, "italianiExtra": 19421, "stranieriExtra": 41544, "totale": 142248 }
+  },
+  {
+    "mese": "Settembre", "meseNum": 9,
+    "2011": { "italianiAlb": 31504, "stranieriAlb": 53320, "italianiExtra": 13527, "stranieriExtra": 18354, "totale": 116705 },
+    "2012": { "italianiAlb": 26688, "stranieriAlb": 42851, "italianiExtra": 13160, "stranieriExtra": 21668, "totale": 104367 },
+    "2013": { "italianiAlb": 27235, "stranieriAlb": 45013, "italianiExtra": 11810, "stranieriExtra": 22377, "totale": 106435 }
+  },
+  {
+    "mese": "Ottobre", "meseNum": 10,
+    "2011": { "italianiAlb": 31383, "stranieriAlb": 36429, "italianiExtra": 9976, "stranieriExtra": 7954, "totale": 85742 },
+    "2012": { "italianiAlb": 25507, "stranieriAlb": 31592, "italianiExtra": 9023, "stranieriExtra": 10144, "totale": 76266 },
+    "2013": { "italianiAlb": 27622, "stranieriAlb": 32848, "italianiExtra": 8827, "stranieriExtra": 8868, "totale": 78165 }
+  },
+  {
+    "mese": "Novembre", "meseNum": 11,
+    "2011": { "italianiAlb": 23225, "stranieriAlb": 13825, "italianiExtra": 5953, "stranieriExtra": 1467, "totale": 44470 },
+    "2012": { "italianiAlb": 27310, "stranieriAlb": 13128, "italianiExtra": 8661, "stranieriExtra": 1699, "totale": 50798 },
+    "2013": { "italianiAlb": 23736, "stranieriAlb": 13993, "italianiExtra": 8305, "stranieriExtra": 1627, "totale": 47661 }
+  },
+  {
+    "mese": "Dicembre", "meseNum": 12,
+    "2011": { "italianiAlb": 24675, "stranieriAlb": 12011, "italianiExtra": 7269, "stranieriExtra": 1365, "totale": 45320 },
+    "2012": { "italianiAlb": 23127, "stranieriAlb": 13880, "italianiExtra": 7148, "stranieriExtra": 1035, "totale": 45190 },
+    "2013": { "italianiAlb": 19827, "stranieriAlb": 12089, "italianiExtra": 6941, "stranieriExtra": 1360, "totale": 40217 }
+  }
+]

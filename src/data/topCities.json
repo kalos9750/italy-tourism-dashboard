@@ -1,0 +1,17 @@
+[
+  { "rank": 1, "citta": "Roma", "presenze": 42705319, "percentuale": 9.2, "residenti": 5.4, "stranieri": 12.3 },
+  { "rank": 2, "citta": "Milano", "presenze": 14054184, "percentuale": 3.0, "residenti": 1.7, "stranieri": 4.1 },
+  { "rank": 3, "citta": "Venezia", "presenze": 13290973, "percentuale": 2.9, "residenti": 0.8, "stranieri": 4.6 },
+  { "rank": 4, "citta": "Firenze", "presenze": 9192960, "percentuale": 2.0, "residenti": 0.7, "stranieri": 3.0 },
+  { "rank": 5, "citta": "Rimini", "presenze": 6938992, "percentuale": 1.5, "residenti": 2.1, "stranieri": 1.0 },
+  { "rank": 6, "citta": "Cavallino-Treporti", "presenze": 6761224, "percentuale": 1.5, "residenti": 0.4, "stranieri": 2.3 },
+  { "rank": 7, "citta": "San Michele al Tagliamento", "presenze": 5572705, "percentuale": 1.2, "residenti": 0.6, "stranieri": 1.7 },
+  { "rank": 8, "citta": "Jesolo", "presenze": 5496611, "percentuale": 1.2, "residenti": 1.0, "stranieri": 1.4 },
+  { "rank": 9, "citta": "Caorle", "presenze": 4426817, "percentuale": 0.9, "residenti": 0.6, "stranieri": 1.3 },
+  { "rank": 10, "citta": "Bologna", "presenze": 4146877, "percentuale": 0.9, "residenti": 0.8, "stranieri": 0.9 },
+  { "rank": 11, "citta": "Lazise", "presenze": 4052124, "percentuale": 0.9, "residenti": 0.2, "stranieri": 1.4 },
+  { "rank": 12, "citta": "Napoli", "presenze": 3862329, "percentuale": 0.8, "residenti": 0.8, "stranieri": 0.9 },
+  { "rank": 13, "citta": "Lignano Sabbiadoro", "presenze": 3618677, "percentuale": 0.8, "residenti": 0.6, "stranieri": 0.9 },
+  { "rank": 14, "citta": "Cesenatico", "presenze": 3609439, "percentuale": 0.8, "residenti": 1.4, "stranieri": 0.2 },
+  { "rank": 15, "citta": "Torino", "presenze": 3580221, "percentuale": 0.8, "residenti": 1.0, "stranieri": 0.6 }
+]

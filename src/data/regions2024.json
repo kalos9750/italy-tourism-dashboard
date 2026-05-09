@@ -1,0 +1,22 @@
+[
+  { "regione": "Piemonte", "residenti": 7033710, "stranieri": 7362027, "totale": 14395737, "quota": 3.1, "var2324": -0.1 },
+  { "regione": "Valle d'Aosta", "residenti": 2163362, "stranieri": 1531697, "totale": 3695059, "quota": 0.8, "var2324": 0.1 },
+  { "regione": "Liguria", "residenti": 8734589, "stranieri": 7394277, "totale": 16128866, "quota": 3.5, "var2324": 0.3 },
+  { "regione": "Lombardia", "residenti": 15880818, "stranieri": 29249711, "totale": 45130529, "quota": 9.7, "var2324": 8.0 },
+  { "regione": "Trentino-Alto Adige", "residenti": 21519493, "stranieri": 35171938, "totale": 56691431, "quota": 12.2, "var2324": 2.7 },
+  { "regione": "Veneto", "residenti": 21693890, "stranieri": 51778487, "totale": 73472377, "quota": 15.8, "var2324": 2.2 },
+  { "regione": "Friuli-Venezia Giulia", "residenti": 4131497, "stranieri": 6012483, "totale": 10143980, "quota": 2.2, "var2324": 2.0 },
+  { "regione": "Emilia-Romagna", "residenti": 28567193, "stranieri": 12215627, "totale": 40782820, "quota": 8.7, "var2324": 4.1 },
+  { "regione": "Toscana", "residenti": 19599594, "stranieri": 26621227, "totale": 46220821, "quota": 9.9, "var2324": 0.4 },
+  { "regione": "Umbria", "residenti": 4366760, "stranieri": 2384282, "totale": 6751042, "quota": 1.4, "var2324": 5.0 },
+  { "regione": "Marche", "residenti": 8572481, "stranieri": 1909193, "totale": 10481674, "quota": 2.3, "var2324": -1.7 },
+  { "regione": "Lazio", "residenti": 16964475, "stranieri": 34789092, "totale": 51753567, "quota": 11.1, "var2324": 13.2 },
+  { "regione": "Abruzzo", "residenti": 6092117, "stranieri": 1084087, "totale": 7176204, "quota": 1.5, "var2324": 5.5 },
+  { "regione": "Molise", "residenti": 413949, "stranieri": 42335, "totale": 456284, "quota": 0.1, "var2324": -7.8 },
+  { "regione": "Campania", "residenti": 9727103, "stranieri": 11642359, "totale": 21369462, "quota": 4.6, "var2324": 3.3 },
+  { "regione": "Puglia", "residenti": 11862805, "stranieri": 6031556, "totale": 17894361, "quota": 3.8, "var2324": 6.4 },
+  { "regione": "Basilicata", "residenti": 2063447, "stranieri": 447925, "totale": 2511372, "quota": 0.5, "var2324": -1.0 },
+  { "regione": "Calabria", "residenti": 6537862, "stranieri": 1606108, "totale": 8143970, "quota": 1.8, "var2324": 0.5 },
+  { "regione": "Sicilia", "residenti": 8650869, "stranieri": 8697369, "totale": 17348238, "quota": 3.7, "var2324": 5.5 },
+  { "regione": "Sardegna", "residenti": 7633588, "stranieri": 7976663, "totale": 15610251, "quota": 3.4, "var2324": 9.9 }
+]
