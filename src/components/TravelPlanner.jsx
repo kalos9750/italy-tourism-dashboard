@@ -32,8 +32,6 @@ const BUDGET_OPTS = [
   { label: '€200+',    min: 200, max: Infinity },
 ]
 
-const RAPIDAPI_HOST = 'booking-com15.p.rapidapi.com'
-
 const YEARS = ['2011', '2012', '2013']
 
 function getAffollamento(checkInDate) {
@@ -51,15 +49,8 @@ function getAffollamento(checkInDate) {
 }
 
 async function fetchDestId(city) {
-  const res = await fetch(
-    `https://${RAPIDAPI_HOST}/api/v1/hotels/searchDestination?query=${encodeURIComponent(city)}`,
-    {
-      headers: {
-        'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
-        'x-rapidapi-host': RAPIDAPI_HOST,
-      },
-    }
-  )
+  const res = await fetch(`/api/searchDestination?city=${encodeURIComponent(city)}`)
+  if (!res.ok) throw new Error(`Errore di rete (${res.status})`)
   const json = await res.json()
   const dest_id = json.data?.[0]?.dest_id
   if (!dest_id) throw new Error('Destinazione non trovata')
@@ -68,14 +59,11 @@ async function fetchDestId(city) {
 
 async function fetchHotels(dest_id, checkIn, checkOut) {
   const res = await fetch(
-    `https://${RAPIDAPI_HOST}/api/v1/hotels/searchHotels?dest_id=${dest_id}&search_type=CITY&arrival_date=${checkIn}&departure_date=${checkOut}&adults=2&room_qty=1&units=metric&currency_code=EUR`,
-    {
-      headers: {
-        'x-rapidapi-key': import.meta.env.VITE_RAPIDAPI_KEY,
-        'x-rapidapi-host': RAPIDAPI_HOST,
-      },
-    }
+    `/api/searchHotels?dest_id=${encodeURIComponent(dest_id)}` +
+      `&arrival_date=${encodeURIComponent(checkIn)}` +
+      `&departure_date=${encodeURIComponent(checkOut)}`
   )
+  if (!res.ok) throw new Error(`Errore di rete (${res.status})`)
   const json = await res.json()
   return json.data?.hotels ?? []
 }
