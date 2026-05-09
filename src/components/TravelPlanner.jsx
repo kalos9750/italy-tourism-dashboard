@@ -106,11 +106,20 @@ export default function TravelPlanner({ defaultRegion = '' }) {
       const city = CITY_MAP[region]
       const dest_id = await fetchDestId(city)
       const all = await fetchHotels(dest_id, checkIn, checkOut)
+      // Booking.com grossPrice is the TOTAL stay price — divide by nights for per-night value
+      const nights = Math.max(
+        1,
+        Math.round((new Date(checkOut) - new Date(checkIn)) / 86_400_000)
+      )
       const filtered = all
-        .filter(h => {
-          const price = h.property?.priceBreakdown?.grossPrice?.value ?? 0
-          return price >= budget.min && (budget.max === Infinity || price <= budget.max)
+        .map(h => {
+          const total = h.property?.priceBreakdown?.grossPrice?.value ?? 0
+          return { ...h, _perNight: total / nights }
         })
+        .filter(h =>
+          h._perNight >= budget.min &&
+          (budget.max === Infinity || h._perNight <= budget.max)
+        )
         .slice(0, 5)
       setHotels(filtered)
       setAffollamento(getAffollamento(checkIn))
@@ -214,7 +223,7 @@ export default function TravelPlanner({ defaultRegion = '' }) {
             <div className="tp-hotel-list">
               {hotels.map((h, i) => {
                 const prop  = h.property ?? {}
-                const price = prop.priceBreakdown?.grossPrice?.value
+                const price = h._perNight
                 const stars = Math.min(5, Math.max(0, Math.round(prop.propertyClass ?? 0)))
                 const score = prop.reviewScore
                 return (
